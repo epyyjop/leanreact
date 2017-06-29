@@ -6,7 +6,7 @@ import { spacing, typography } from 'material-ui/styles'
 import withWidth, { LARGE } from 'material-ui/utils/withWidth'
 import { Route, Switch } from 'react-router-dom'
 
-import UserProfile from './user/UserList'
+import UserListContainer from './user/UserListContainer'
 import WorkshopList from './workshop/WorkshopList'
 import Dashboard from './dashboard'
 import NotFound from './NotFound'
@@ -79,11 +79,10 @@ class App extends Component {
         <div className="view-container" style={styles.app}>
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/users" component={UserProfile} />
+            <Route path="/users" component={UserListContainer} />
+            <Route path="/workshops" component={WorkshopList} />
             <Route path="/login" component={Login} />
-            <Route render={({ location }) => (
-                <h3>Page not found <code>{location.pathname}</code></h3>
-              )} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </div>
